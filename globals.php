@@ -15,11 +15,21 @@ if ($company_name_query_result = mysqli_query($db, $company_name_query)) {
 /*Запрос имени и фамилии сотрудника*/
 $staff_name_query = "SELECT * from staff";
 
+
 if ($staff_name_result = mysqli_query($db, $staff_name_query)) {
     $staff_name_r = array();
-    while ($row = mysqli_fetch_array($staff_name_result)) {
-        $staff_name_r[] = $row;
+    while ($row_Staff = mysqli_fetch_array($staff_name_result)) {
+        $staff_name_r[] = $row_Staff;
     }
     mysqli_free_result($staff_name_result);
 }
+$client_name_query = "SELECT * FROM client";
+if ($client_name_result = mysqli_query($db, $client_name_query)) {
 
+    $client_name_r = array();
+    while ($row_Client = mysqli_fetch_array($client_name_result)) {
+        $client_name_r[] = $$row_Client;
+    }
+    mysqli_free_result($client_name_result);
+}
+?>

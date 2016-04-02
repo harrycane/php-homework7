@@ -1,3 +1,9 @@
+<?php
+if (!isset($_COOKIE['id']) || $_COOKIE['id']<0){
+header('location:index.php');
+}   $id = $_COOKIE['id'];
+?>
+
 <div class="row">
     <nav>
         <ul>
