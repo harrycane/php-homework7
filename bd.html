@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+CREAT TABLE `staff`
+
+</body>
+</html>
+
+CREATE TABLE `staff` (
+ `id` TINYINT(3) UNSIGNED NOT NULL AUTO_INCREMENT,
+`last_name` VARCHAR(100) NOT NULL,
+ `first_name` VARCHAR(100) NOT NULL,
+ `position` TINYINT(3) UNSIGNED NOT NULL,
+ PRIMARY KEY (`id`)
+ );
+
+CREATE TABLE `compani` (
+ `id` TINYINT(3) UNSIGNED NOT NULL AUTO_INCREMENT,
+ `name` VARCHAR(100) NOT NULL,
+ PRIMARY KEY (`id`)
+ );
+
+CREATE TABLE `client`(
+`id` TINYINT(3) UNSIGNED NOT NULL AUTO_INCREMENT,
+`id_compani` TINYINT(3) UNSIGNED DEFAULT NULL,
+`last_name` VARCHAR (100) NOT NULL,
+`first_name` VARCHAR (100) NOT NULL,
+PRIMARY KEY(`id`),
+INDEX `FK`(`id_compani`),
+FOREIGN KEY (`id_compani`)
+REFERENCES `compani`(`id`) ON DELETE SET NULL
+);
+
+CREATE TABLE `order`(
+ `id` TINYINT(3) UNSIGNED NOT NULL AUTO_INCREMENT,
+ `id_staff` TINYINT(3) UNSIGNED NOT NULL,
+ `id_client` TINYINT(3) UNSIGNED NOT NULL,
+ `sum` FLOAT(10,2),
+ `status` TINYINT(3) UNSIGNED NOT NULL,
+ PRIMARY KEY(`id`),
+ INDEX `FK1`(`id_staff`),
+FOREIGN KEY (`id_staff`) REFERENCES `staff`(`id`) ON DELETE RESTRICT,
+ INDEX `FK2`(`id_client`),
+FOREIGN KEY (`id_client`)REFERENCES `client`(`id`) ON DELETE RESTRICT
+);
