@@ -1,5 +1,5 @@
 <?php
-define('PAGE', 'index7');
+define('PAGE', 'staff');
 include_once "header.php";
 ?>
     <form method="post">
